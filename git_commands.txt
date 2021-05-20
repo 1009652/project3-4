@@ -1,0 +1,8 @@
+-git init						:initializes a git repository in current folder
+-git status						:gives an overview of the changed things
+-git add <filename>					:will add the filename to the 'to commit' list
+-git commit -m "message"				:commits all added files to the repository
+-git checkout -b <branch name>				:branches off, to keep project parts seperated (like making a copie to work in)
+-git branch						:shows all the branches created, the branch with an asterisk is the current branch
+-git remote add <name> <address online git-repo>	:adds the online repository
+-git push -u <name> master				:sets the added repo as the master repo
