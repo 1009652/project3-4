@@ -50,19 +50,18 @@ void loop() {
 }
 
 void checkReceiptOrDispenser(){
-  int i = 9;
   while(true){
+    int i = -2;
     x = Serial.readString();
     x = String(x);
     Serial.println(i);
     if(x != ""){
       if(x.indexOf("m") > -1){//m is money dispenser
-        Serial.println(8);
+        Serial.println(-1);
         delay(100);
         moneyDispenser();
-        //break;
       } else if (x.indexOf("r")){//r is receipt print
-        Serial.println(8);
+        Serial.println(-1);
         receipt();
       }
     }
@@ -157,7 +156,7 @@ void printReceipt(){
   printer.println("Bedankt voor het gebruiken van  de services van ABN-MANBRO");
   printer.println("GRAAG TOT ZIENS");
   //Rolls out 
-  printer.feed(2);
+  printer.feed(3);
   
 
   printer.sleep();      // Tell printer to sleep

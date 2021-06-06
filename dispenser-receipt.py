@@ -3,7 +3,7 @@ import time
 from datetime import datetime
 from datetime import date
 
-arduino = serial.Serial(port='COM3', baudrate=9600, timeout=1)
+arduino = serial.Serial(port='COM8', baudrate=9600, timeout=1)
 
 def printReceipt(currentTransaction, currentAccount, currentCard, currentAmount):
     sendChoice(2)
@@ -23,9 +23,8 @@ def printReceipt(currentTransaction, currentAccount, currentCard, currentAmount)
         else:
             temp = data
 
-        print("data:")
         data = int(data)
-        print(data)
+        print("data-bon: ", data)
 
         if(data == 0):
             output = "d," + currentDay
@@ -34,16 +33,16 @@ def printReceipt(currentTransaction, currentAccount, currentCard, currentAmount)
             output = "t," + currentTime
             writeOut(output)
         elif (data == 2):
-            output = "o," + currentTransaction
+            output = "o," + str(currentTransaction)
             writeOut(output)
         elif (data == 3):
-            output = "a," + currentAccount
+            output = "a," + str(currentAccount)
             writeOut(output)
         elif (data == 4):
-            output = "c," + currentCard
+            output = "c," + str(currentCard)
             writeOut(output)
         elif (data == 5):
-            output = "h," + currentAmount
+            output = "h," + str(currentAmount)
             writeOut(output)
         elif (data == 6):
             break;
@@ -77,7 +76,7 @@ def sentNotes(notes50, notes20, notes10):
 
 
 def writeOut(x):
-    print(x)
+    print("x: ", x)
     output = x
     outputBytes = str.encode(output)
     arduino.write(outputBytes)
@@ -92,19 +91,19 @@ def sendChoice(choice):
     while(True):
         readVal = arduino.readline()[:-2]
         data = str(readVal, 'UTF-8')
-        print(data)
+        print("data: ", data)
 
         if data == "":
             data = temp
         else:
             temp = data
         data = int(data)
-        print("data: ", data)
-
+        #print("data: ", data)
+        print("output: ", output)
         writeOut(output)
 
-        if data != 9:
-            break;
+        if data != -1:
+            break
 
 
 
