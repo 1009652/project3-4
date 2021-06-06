@@ -7,6 +7,7 @@
 -git remote add <name> <address online git-repo>	:adds the online repository
 -git push -u <name> master				:sets the added repo as the master repo
 -git push <name> <branch name>				:will add the branch to the online repo (branch name = 'master' for general pushes)
+-git remote rm <name>					:will remove the connection to the online repo
 
 -git pull <name> master					:will update the local repo with the online repo
 -git checkout <branch name>				:takes you to the <branch name>
